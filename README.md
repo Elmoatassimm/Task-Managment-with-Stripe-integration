@@ -82,7 +82,7 @@ This project is a **full-stack task web app** built with **Laravel (backend)** a
      STRIPE_SECRET_KEY=your_stripe_secret_key
      STRIPE_PUBLIC_KEY=your_stripe_public_key
      ```
-   - Frontend `.env.local`:
+   - Frontend `.env`:
      ```env
      VITE_STRIPE_PUBLIC_KEY=your_stripe_public_key
      ```
@@ -96,6 +96,7 @@ This project is a **full-stack task web app** built with **Laravel (backend)** a
 10. **Run Servers**:
     - Backend (from `/backend`):
       ```bash
+      stripe listen --forward-to 127.0.0.1:8000/api/stripe/webhook
       php artisan serve
       ```
     - Frontend (from `/frontend`):
