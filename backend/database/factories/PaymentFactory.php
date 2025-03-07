@@ -13,8 +13,7 @@ class PaymentFactory extends Factory
         return [
             'user_id' => \App\Models\User::factory(),
             'payment_intent_id' => $this->faker->uuid,
-            'status' => 'pending', // Default status
-            // Add other necessary fields
+            'status' => 'pending', 
         ];
     }
 }
