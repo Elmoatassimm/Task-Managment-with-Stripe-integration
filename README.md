@@ -129,3 +129,15 @@ This project is a **full-stack task web app** built with **Laravel (backend)** a
 | `/stripe/webhook`        | POST   | No            | Handle Stripe events                      |
 
 ---
+## Screenshots
+Here are some screenshots of the application:
+
+![Screenshot 1](scrr/sc1.png)
+---
+![Screenshot 2](scrr/sc2.png)
+---
+![Screenshot 3](scrr/sc3.png)
+---
+![Screenshot 4](scrr/sc4.png)
+
+---
