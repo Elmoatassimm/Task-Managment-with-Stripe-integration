@@ -1,5 +1,6 @@
 name: Laravel CI/CD Pipeline
 
+
 on:
   push:
     branches: [ main ]
@@ -7,8 +8,11 @@ on:
     branches: [ main ]
 
 jobs:
-  laravel-tests:
+  backend-tests:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
     env:
       DB_CONNECTION: sqlite
       DB_DATABASE: database/database.sqlite
@@ -22,18 +26,14 @@ jobs:
           php-version: '8.2'
           extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, dom, filter, gd, iconv, json, mbstring, pdo
       - uses: actions/checkout@v3
-      - name: Cd backend
-        run: cd backend
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       - name: Create Database
         run: |
           mkdir -p database
           touch database/database.sqlite
-      - name: validate Dependencies
-        run: composer validate
       - name: Install Dependencies
-        run: composer install --no-interaction
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: Generate key
         run: php artisan key:generate
       - name: Generate jwt key
@@ -44,6 +44,7 @@ jobs:
         run: php artisan migrate --force
       - name: Run Pest Tests
         run: vendor/bin/pest
+
 
   deploy-production:
     needs: laravel-tests
