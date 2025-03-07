@@ -26,6 +26,8 @@ This project is a **full-stack task web app** built with **Laravel (backend)** a
    composer install
    cp .env.example .env
    php artisan key:generate
+   php artisan jwt:secret
+
    
 
 3. **Configure Database**:
@@ -66,19 +68,15 @@ This project is a **full-stack task web app** built with **Laravel (backend)** a
      ```
    
 
-7. **Start Queue Worker** (in a new terminal):
-   ```bash
-   php artisan queue:work
-   ```
 
-8. **Frontend Setup**:
+7. **Frontend Setup**:
    ```bash
    cd ../frontend
    cp .env.example .env
    npm install
    ```
 
-9. **Configure Stripe Keys**:
+8. **Configure Stripe Keys**:
    - Backend `.env`:
      ```env
      STRIPE_SECRET_KEY=your_stripe_secret_key
@@ -88,6 +86,12 @@ This project is a **full-stack task web app** built with **Laravel (backend)** a
      ```env
      VITE_STRIPE_PUBLIC_KEY=your_stripe_public_key
      ```
+
+9. **Start Queue Worker** (in a new terminal):
+   ```bash
+   php artisan queue:work
+   ```
+
 
 10. **Run Servers**:
     - Backend (from `/backend`):
