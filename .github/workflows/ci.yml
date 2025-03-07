@@ -22,6 +22,8 @@ jobs:
           php-version: '8.2'
           extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, dom, filter, gd, iconv, json, mbstring, pdo
       - uses: actions/checkout@v3
+      - name: Cd backend
+        run: cd backend
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       - name: Create Database
